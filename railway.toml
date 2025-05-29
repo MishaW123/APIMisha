@@ -3,6 +3,6 @@ builder = "dockerfile"
 dockerfilePath = "APIMisha/Dockerfile"
 
 [deploy]
-startCommand = "dotnet ApiMisha.dll"
+startCommand = "dotnet APIMisha.dll"
 restartPolicyType = "always"
 healthcheckPath = "/health"
