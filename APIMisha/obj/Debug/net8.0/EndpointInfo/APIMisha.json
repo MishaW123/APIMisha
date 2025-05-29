@@ -1,0 +1,645 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "APIMisha",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/Main/SearchCommand": {
+      "get": {
+        "tags": [
+          "Main"
+        ],
+        "parameters": [
+          {
+            "name": "Name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Team"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Team"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Team"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Main/SearchEvents": {
+      "get": {
+        "tags": [
+          "Main"
+        ],
+        "parameters": [
+          {
+            "name": "Command1",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Command2",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Event"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Event"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Event"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Main/AllLegues": {
+      "get": {
+        "tags": [
+          "Main"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/League"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/League"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/League"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Main/LeagueTable": {
+      "get": {
+        "tags": [
+          "Main"
+        ],
+        "parameters": [
+          {
+            "name": "IDLeague",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "season",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Table"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Table"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Table"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Main/EventStats": {
+      "get": {
+        "tags": [
+          "Main"
+        ],
+        "parameters": [
+          {
+            "name": "IDEvent",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Stat"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Stat"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Stat"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Main/PlayerInCommand": {
+      "get": {
+        "tags": [
+          "Main"
+        ],
+        "parameters": [
+          {
+            "name": "IDCommand",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Player"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Player"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Player"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Event": {
+        "type": "object",
+        "properties": {
+          "idEvent": {
+            "type": "string",
+            "nullable": true
+          },
+          "strEvent": {
+            "type": "string",
+            "nullable": true
+          },
+          "strSport": {
+            "type": "string",
+            "nullable": true
+          },
+          "idLeague": {
+            "type": "string",
+            "nullable": true
+          },
+          "strLeague": {
+            "type": "string",
+            "nullable": true
+          },
+          "strSeason": {
+            "type": "string",
+            "nullable": true
+          },
+          "strDescriptionEN": {
+            "type": "string",
+            "nullable": true
+          },
+          "strHomeTeam": {
+            "type": "string",
+            "nullable": true
+          },
+          "intHomeScore": {
+            "type": "string",
+            "nullable": true
+          },
+          "intRound": {
+            "type": "string",
+            "nullable": true
+          },
+          "intAwayScore": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateEvent": {
+            "type": "string",
+            "nullable": true
+          },
+          "strTime": {
+            "type": "string",
+            "nullable": true
+          },
+          "strGroup": {
+            "type": "string",
+            "nullable": true
+          },
+          "idVenue": {
+            "type": "string",
+            "nullable": true
+          },
+          "strVenue": {
+            "type": "string",
+            "nullable": true
+          },
+          "strCountry": {
+            "type": "string",
+            "nullable": true
+          },
+          "strStatus": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "League": {
+        "type": "object",
+        "properties": {
+          "idLeague": {
+            "type": "string",
+            "nullable": true
+          },
+          "strLeague": {
+            "type": "string",
+            "nullable": true
+          },
+          "strSport": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Player": {
+        "type": "object",
+        "properties": {
+          "idPlayer": {
+            "type": "string",
+            "nullable": true
+          },
+          "idTeam": {
+            "type": "string",
+            "nullable": true
+          },
+          "strNationality": {
+            "type": "string",
+            "nullable": true
+          },
+          "strPlayer": {
+            "type": "string",
+            "nullable": true
+          },
+          "strPlayerAlternate": {
+            "type": "string",
+            "nullable": true
+          },
+          "strTeam": {
+            "type": "string",
+            "nullable": true
+          },
+          "strSport": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateBorn": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateDied": {
+            "nullable": true
+          },
+          "strNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "strBirthLocation": {
+            "type": "string",
+            "nullable": true
+          },
+          "strStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "strDescriptionEN": {
+            "type": "string",
+            "nullable": true
+          },
+          "strPosition": {
+            "type": "string",
+            "nullable": true
+          },
+          "strHeight": {
+            "type": "string",
+            "nullable": true
+          },
+          "strWeight": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Stat": {
+        "type": "object",
+        "properties": {
+          "strEvent": {
+            "type": "string",
+            "nullable": true
+          },
+          "strFilename": {
+            "type": "string",
+            "nullable": true
+          },
+          "strLeague": {
+            "type": "string",
+            "nullable": true
+          },
+          "intHomeScore": {
+            "type": "string",
+            "nullable": true
+          },
+          "intAwayScore": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateEvent": {
+            "type": "string",
+            "nullable": true
+          },
+          "strTime": {
+            "type": "string",
+            "nullable": true
+          },
+          "strCountry": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Table": {
+        "type": "object",
+        "properties": {
+          "idStanding": {
+            "type": "string",
+            "nullable": true
+          },
+          "intRank": {
+            "type": "string",
+            "nullable": true
+          },
+          "idTeam": {
+            "type": "string",
+            "nullable": true
+          },
+          "strTeam": {
+            "type": "string",
+            "nullable": true
+          },
+          "strBadge": {
+            "type": "string",
+            "nullable": true
+          },
+          "idLeague": {
+            "type": "string",
+            "nullable": true
+          },
+          "strLeague": {
+            "type": "string",
+            "nullable": true
+          },
+          "strSeason": {
+            "type": "string",
+            "nullable": true
+          },
+          "strForm": {
+            "type": "string",
+            "nullable": true
+          },
+          "strDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "intPlayed": {
+            "type": "string",
+            "nullable": true
+          },
+          "intWin": {
+            "type": "string",
+            "nullable": true
+          },
+          "intLoss": {
+            "type": "string",
+            "nullable": true
+          },
+          "intDraw": {
+            "type": "string",
+            "nullable": true
+          },
+          "intGoalsFor": {
+            "type": "string",
+            "nullable": true
+          },
+          "intGoalsAgainst": {
+            "type": "string",
+            "nullable": true
+          },
+          "intGoalDifference": {
+            "type": "string",
+            "nullable": true
+          },
+          "intPoints": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateUpdated": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Team": {
+        "type": "object",
+        "properties": {
+          "idTeam": {
+            "type": "string",
+            "nullable": true
+          },
+          "strTeam": {
+            "type": "string",
+            "nullable": true
+          },
+          "strTeamAlternate": {
+            "type": "string",
+            "nullable": true
+          },
+          "strTeamShort": {
+            "type": "string",
+            "nullable": true
+          },
+          "intFormedYear": {
+            "type": "string",
+            "nullable": true
+          },
+          "strSport": {
+            "type": "string",
+            "nullable": true
+          },
+          "strLeague": {
+            "type": "string",
+            "nullable": true
+          },
+          "strLeague2": {
+            "type": "string",
+            "nullable": true
+          },
+          "strLeague3": {
+            "type": "string",
+            "nullable": true
+          },
+          "strStadium": {
+            "type": "string",
+            "nullable": true
+          },
+          "strKeywords": {
+            "type": "string",
+            "nullable": true
+          },
+          "strLocation": {
+            "type": "string",
+            "nullable": true
+          },
+          "strWebsite": {
+            "type": "string",
+            "nullable": true
+          },
+          "strDescriptionEN": {
+            "type": "string",
+            "nullable": true
+          },
+          "strDescriptionRU": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

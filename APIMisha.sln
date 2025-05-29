@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36109.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIMisha", "APIMisha\APIMisha.csproj", "{B829AB5F-8710-4930-8922-7D9F22521827}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Элементы решения", "Элементы решения", "{754FC069-D67B-A9D7-50A1-8D1CA196D8F1}"
+	ProjectSection(SolutionItems) = preProject
+		railway.toml = railway.toml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B829AB5F-8710-4930-8922-7D9F22521827}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B829AB5F-8710-4930-8922-7D9F22521827}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B829AB5F-8710-4930-8922-7D9F22521827}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B829AB5F-8710-4930-8922-7D9F22521827}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A76D4A90-9FCF-46CE-ADF5-A5A3AD56EF8D}
+	EndGlobalSection
+EndGlobal
