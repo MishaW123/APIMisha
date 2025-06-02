@@ -1,4 +1,5 @@
-﻿using APIMisha.Models;
+using APIMisha.Database;
+using APIMisha.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -9,8 +10,8 @@ namespace APIMisha.Controllers
     public class MainController : ControllerBase
     {
         [HttpGet]
-        [ActionName("SearchCommand")]
-        public async Task<Team> SearchCommand(string Name)
+        [ActionName("SearchTeam")]
+        public async Task<Team> SearchTeam(string Name)
         {
             using(HttpClient client = new())
             {
@@ -24,11 +25,11 @@ namespace APIMisha.Controllers
         }
         [HttpGet]
         [ActionName("SearchEvents")]
-        public async Task<List<Event>> SearchEvents(string Command1, string Command2)
+        public async Task<List<Event>> SearchEvents(string Team1, string Team2)
         {
             using (HttpClient client = new())
             {
-                HttpRequestMessage request = new(HttpMethod.Get, Links.URI + $"searchevents.php?e={Command1}_vs_{Command2}");
+                HttpRequestMessage request = new(HttpMethod.Get, Links.URI + $"searchevents.php?e={Team1}_vs_{Team2}");
                 HttpResponseMessage response = await client.SendAsync(request);
                 response.EnsureSuccessStatusCode();
                 string json = await response.Content.ReadAsStringAsync();
@@ -86,17 +87,39 @@ namespace APIMisha.Controllers
         }
         [HttpGet]
         [ActionName("PlayerInCommand")]
-        public async Task<List<Player>> PlayerInCommand(int IDCommand)
+        public async Task<List<Player>> PlayerInCommand(int IDTeam)
         {
             using (HttpClient client = new())
             {
-                HttpRequestMessage request = new(HttpMethod.Get, Links.URI + $"lookup_all_players.php?id={IDCommand}");
+                HttpRequestMessage request = new(HttpMethod.Get, Links.URI + $"lookup_all_players.php?id={IDTeam}");
                 HttpResponseMessage response = await client.SendAsync(request);
                 response.EnsureSuccessStatusCode();
                 string json = await response.Content.ReadAsStringAsync();
                 Players team = JsonConvert.DeserializeObject<Players>(json);
                 return team.player;
             }
+        }
+        [HttpPost]
+        [ActionName("InsertUser")]
+        public async Task InsertUser(long id)
+        {
+            DBControl dBControl = new();
+            dBControl.SearchUserWithID(id);
+        }
+        [HttpPut]
+        [ActionName("AddBookmarks")]
+        public async Task AddBookmarks(long id, string Team)
+        {
+            DBControl dBControl = new();
+            dBControl.UpdateBookmarkAsync(id, Team);
+        }
+        [HttpPut]
+        [ActionName("GetBookmarks")]
+        public async Task<List<string>> GetBookmarks(long id)
+        {
+            DBControl dBControl = new();
+            var list = await dBControl.GetBookmarksByIDAsync(id);
+            return list;
         }
     }
 }
