@@ -1,0 +1,63 @@
+using Newtonsoft.Json;
+using Npgsql;
+
+namespace APIMisha.Database
+{
+    public class DBControl
+    {
+        NpgsqlConnection _connection = new(Links.Connect);
+        public async Task SearchUserWithID(long id)
+        {
+            var sql = "select * from \"bookmarks\" where \"id\" = @id";
+
+            using NpgsqlCommand cmd = new(sql, _connection);
+            cmd.Parameters.AddWithValue("id", id);
+
+            using NpgsqlDataReader sqlData = await cmd.ExecuteReaderAsync();
+
+            await _connection.OpenAsync();
+            bool data = await sqlData.ReadAsync();
+            if (!data)
+            {
+                sql = "insert into \"bookmarks\" (\"id\", \"teams\") values (@id, '[]'::json)";
+                using NpgsqlCommand cmd2 = new(sql, _connection);
+                cmd2.Parameters.AddWithValue("id", id);
+                await cmd2.ExecuteScalarAsync();
+            }
+            await _connection.CloseAsync();
+        }
+        public async Task<List<string>> GetBookmarksByIDAsync(long id)
+        {
+            var sql = "select \"teams\" from \"bookmarks\" where \"id\" = @id";
+
+            using NpgsqlCommand cmd = new(sql, _connection);
+            cmd.Parameters.AddWithValue("id", id);
+
+            using NpgsqlDataReader sqlData = await cmd.ExecuteReaderAsync();
+
+            await _connection.OpenAsync();
+            await sqlData.ReadAsync();
+            string json = sqlData.GetString(0);
+            await _connection.CloseAsync();
+
+            var data = JsonConvert.DeserializeObject<List<string>>(json);
+            return data;
+        }
+        public async Task UpdateBookmarkAsync(long id, string team)
+        {
+            var sql = "update \"users\" set \"bookmarks\" = @jsonValue::json where \"id\" = @id";
+
+            var jsonValue = await GetBookmarksByIDAsync(id);
+            if(jsonValue.Contains(team))
+                return;
+            jsonValue.Add(team);
+            using NpgsqlCommand cmd = new(sql, _connection);
+            cmd.Parameters.AddWithValue("id", id);
+            cmd.Parameters.AddWithValue("jsonValue", jsonValue);
+
+            await _connection.OpenAsync();
+            await cmd.ExecuteNonQueryAsync();
+            await _connection.CloseAsync();
+        }
+    }
+}
